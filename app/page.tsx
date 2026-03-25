@@ -1,6 +1,6 @@
 "use client";
 
-import { NewsCard } from "@/compoents/NewsCard";
+import { NewsCard } from "@/components/NewsCard";
 import newsClient from "@/utils/axios";
 import { NextResponse } from "next/server";
 import { useEffect, useState } from "react";
