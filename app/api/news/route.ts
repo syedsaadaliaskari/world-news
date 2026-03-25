@@ -7,13 +7,14 @@ export async function GET(request: NextRequest) {
     const category = searchParams.get("category") || "general";
     const country = searchParams.get("country") || "us";
 
-    const API_KEY = process.env.API_KEY;
+    const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
     const data = await newsClient.get("/top-headlines", {
       params: {
         category: category,
         country: country,
         apiKey: API_KEY,
+        pageSize: 6,
       },
     });
 
