@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import newsClient from "@/utils/axios";
-
+import axios from "axios";
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
@@ -9,23 +9,16 @@ export async function GET(request: NextRequest) {
 
     const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
-    const data = await newsClient.get("/top-headlines", {
+    const response = await axios.get("https://newsapi.org/v2/top-headlines", {
       params: {
         category: category,
         country: country,
         apiKey: API_KEY,
-        pageSize: 6,
+        pageSize: 12,
       },
     });
 
-    return NextResponse.json(
-      {
-        data: data.data,
-      },
-      {
-        status: data.status || 200,
-      },
-    );
+    return NextResponse.json(response.data);
   } catch (err: any) {
     console.error("Api results failed", err.message);
 

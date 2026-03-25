@@ -1,9 +1,9 @@
 import axios from "axios";
 
 const newsClient = axios.create({
-  baseURL: "https://newsapi.org/v2", // The starting part of every request
+  baseURL: "/api",
   headers: {
-    "X-Api-Key": process.env.NEXT_PUBLIC_API_KEY, // Attaches your key automatically
+    "Content-Type": "application/json",
   },
 });
 
